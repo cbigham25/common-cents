@@ -15,4 +15,7 @@ var firstChildUl = document.getElementById("first-child-ul");
 console.log(firstChildUl)
 
 // Setting style of element
-firstChildUl.style.color = "green";
+firstChildUl.style.color = "yellow";
+
+// Set the document.body.children[1].children[2]
+document.body.children[1].children[2].style.color = "Red";

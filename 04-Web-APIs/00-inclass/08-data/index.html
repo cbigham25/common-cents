@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="boxes">
+    <div class="box" data-id="box12345" data-package="A" style="background-color: aqua;">BOX 1</div>
+    <div class="box" data-id="box555555" data-package="B" style="background-color: yellow;">BOX 2</div>s
+    <div class="box" data-id="box000000" data-package="C" style="background-color: rgb(8, 0, 255);">BOX 3</div>
+</div>
+
+    
+    <script>
+    document.addEventListener("click", function(event){
+        var boxClicked = event.target;
+        if (boxClicked.matches(".box")){
+            alert(boxClicked.dataset.id + " PACKAGE: " + boxClicked.dataset.package);
+        }
+    })
+    //var someNameEl = document.querySelector("#name");
+    //Getters
+
+    //console.log(someNameEl.dataset.name); //Chris
+    //Setters
+   // someNameEl.dataset.name = "Bob;"
+    </script>
+
+</body>
+</html>
