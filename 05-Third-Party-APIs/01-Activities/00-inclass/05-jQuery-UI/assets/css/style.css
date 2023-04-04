@@ -18,6 +18,9 @@ h6 {
   font-style: italic;
 }
 
-.ui-state-highlight{
-  list-style-type: none;
+.ui-widget-header {
+  border: 1px solid #dddddd;
+  background: #ff0000;
+  color: #e50000;
+  font-weight: bold;
 }

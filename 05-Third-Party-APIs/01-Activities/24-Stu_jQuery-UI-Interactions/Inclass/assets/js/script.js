@@ -64,15 +64,5 @@ $(function () {
   });
 });
 
-// * It's done when the list of skills can be reorganized and sorted 
-// using drag-and-drop functionality.
-
-// * It's done when a placeholder is filling empty space.
-
-$(function() {
-  $( "#skills-list" ).sortable({
-    placeholder: "ui-state-highlight"
-  });
-  $( "#skills-list" ).disableSelection();
-});
-
+// Add interaction here
+//
