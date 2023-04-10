@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Methods</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <script>
+        //var url = "https://www.omdbapi.com/?t=Shrek The Third&apikey=9fa6058b";
+        $.ajax({
+            url: "https://www.omdbapi.com/?t=Shrek The Third&apikey=9fa6058b",
+            method: "GET"
+        }).then(function(response){
+            console.log("THE RESPONSE");
+            console.log(response)
+        })
+
+        // OLD JS
+        //Browser XMLHttpRequest, built in the browser and require more code.
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            console.log('XMLHttpRequest Response \n-------------');
+            console.log(xhr.response);
+        }
+        };
+
+        requestUrl = "https://www.omdbapi.com/?t=Shrek The Third&apikey=9fa6058b";
+        xhr.open('GET', requestUrl);
+        xhr.send();
+        
+        
+    </script>
+    
+</body>
+</html>
