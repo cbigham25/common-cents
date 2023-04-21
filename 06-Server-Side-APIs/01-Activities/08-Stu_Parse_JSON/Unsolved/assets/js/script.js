@@ -7,7 +7,12 @@ fetch(requestUrl)
   })
   .then(function (data) {
     console.log('Github Repo Issues \n----------');
+    
     console.log(data);
+    for (let i = 1; i <= 10 ; i++)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
     // TODO: Loop through the response
     // TODO: Console log each issue's URL and each user's login
   });

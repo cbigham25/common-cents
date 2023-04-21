@@ -1,0 +1,31 @@
+section {
+    color:rebeccapurple;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:20px;
+    line-height: 1.5;
+    font-weight: bolder;
+}
+#firstParagraph{
+    font-size:8px
+}
+#secondParagraph{
+    font-size:48px
+}
+#thirdParagraph{
+    font-size:32px;
+    display:none;
+}
+.navLinks {
+    display: inline
+}
+.thurman{
+    width:200px;
+    display:block;
+    margin: 0 auto;
+    border:10px solid black;
+    padding:0px 5px 10px 20px;
+    margin:250px 50px 0px 20px
+}
