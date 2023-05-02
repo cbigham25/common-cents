@@ -1,0 +1,15 @@
+{
+  "name": "npm_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "random-rick-and-morty-character-v2": "^1.0.1"
+  }
+}
