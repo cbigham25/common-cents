@@ -1,6 +1,6 @@
 // Define variables to store the API endpoint and your API key
 const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
-const apiKey = "your-api-key-here";
+const apiKey = "36f9850102a58e16f2699ebeb0e51d39";
 
 // Define a function to fetch weather data from the API
 function getWeatherData(city) {
@@ -13,8 +13,6 @@ function getWeatherData(city) {
       const conditions = data.weather[0].description;
       const windSpeed = data.wind.speed;
 
-      // Use the weather data to update the HTML elements in your weather dashboard
-      // For example:
       const tempElement = document.getElementById("temp");
       tempElement.textContent = `${temperature}°C`;
 
@@ -35,22 +33,4 @@ function getWeatherData(city) {
 
 // Call the getWeatherData() function with the desired location as the argument
 getWeatherData("New York");
-
-fetch('https://api.example.com/weather')
-  .then(response => response.json())
-  .then(data => {
-    // Extract the temperature and icon URL from the API response
-    const temperature = data.temperature;
-    const iconUrl = data.iconUrl;
-
-    // Update the temperature display
-    const temperatureDisplay = document.getElementById('temperature');
-    temperatureDisplay.textContent = temperature;
-
-    // Update the weather icon display
-    const iconDisplay = document.getElementById('weather-icon');
-    iconDisplay.setAttribute('src', iconUrl);
-  })
-  .catch(error => {
-    console.error('Error retrieving weather data:', error);
-  });
+getWeatherData("Los Angeles");

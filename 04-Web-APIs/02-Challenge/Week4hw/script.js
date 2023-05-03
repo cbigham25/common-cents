@@ -1,14 +1,25 @@
-let duration = 60;
-let timeDisplay = document.getElementById('timer');
-let timer;
+var duration = 300;
+var timeDisplay = document.getElementById('timer');
+var timer = setInterval(updateTimer, 300000);
+console.log("You have 5 minutes")
 
 function updateTimer() {
+    var minutes = Math.floor(duration / 60);
+    var seconds = duration % 60;
+    var displayString = '';
+    if (minutes < 1) {
+        displayString += '0';
+    }
+    displayString += minutes + ':';
+    if (seconds < 10) {
+        displayString += '0';
+    }
+    displayString += seconds;
+    timeDisplay.textContent = displayString;
     duration--;
-    timerDisplay.textContent = duration;
-    if (duration === 0) {
+    if (duration < 0) {
         clearInterval(timer);
-        alert('Your times is up!')
+        alert('Your time is up!');
     }
 }
 
-timer = setInterval(updateTimer, 1000);

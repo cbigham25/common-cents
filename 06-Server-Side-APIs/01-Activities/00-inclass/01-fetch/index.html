@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+    <h1></h1>
+    <img></img>
+    <script>
+        //var url = "https://www.omdbapi.com/?i=tt0108358&apikey=9fa6058b";  
+        var url = "https://www.omdbapiTWO.com/sdsdfds?t=Shrek The Third&apikey=9fa6058b";
+        var h1El = document.querySelector("h1");
+        var imgEl = document.querySelector("img");
+
+        function placeTitle(title, poster){
+            h1El.textContent = title
+            imgEl.setAttribute("src", poster);
+        }
+
+        fetch(url, {
+            method: 'GET', //POST, PUT, DELETE - CRUD Create, Read, Update
+            credentials: 'same-orgin',
+            redirect:'follow',
+            cache: 'reload'
+        })
+        .then(function(response){
+            // if (!response.ok){
+            //     h1El.textContent = "TITLE NOT FOUND!";
+              
+            // }
+            if (response.status !== 200){
+                 h1El.textContent = "TITLE NOT FOUND! CODE:" + response.status;
+                 imgEl.setAttribute("src", "notfound.jpg");
+
+            }
+            //gets response ready
+            return response.json();
+        })
+        .then(function(data){ 
+                //‘response’ is ready and is available as ‘data’. 
+                console.log(data);
+                var title = data.Title;
+                var poster = data.Poster;
+                placeTitle(title, poster);
+        });
+
+
+
+
+    </script>
+</body>
+</html>
