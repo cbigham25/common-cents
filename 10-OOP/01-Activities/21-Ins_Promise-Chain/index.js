@@ -1,11 +1,11 @@
-const inquirer = require('inquirer');
-const fetch = require('node-fetch');
+const inquirer = require("inquirer");
+const fetch = require("node-fetch");
 
 inquirer
   .prompt({
-    type: 'input',
-    name: 'username',
-    message: 'Enter a Github Username:',
+    type: "input",
+    name: "username",
+    message: "Enter a Github Username:",
   })
   // promises are chained to directly pass inquirer data into fetch request
   .then((res) => fetch(`https://api.github.com/users/${res.username}`))
