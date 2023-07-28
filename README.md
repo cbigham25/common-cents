@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # UofM-VIRT-FSF-PT-02-2023-U-LOLC
 
 
@@ -90,3 +91,7 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+=======
+# Week18
+the official week 18 repository
+>>>>>>> 42c7c32b936999a6e6b17b7773cfc666cea3d366
