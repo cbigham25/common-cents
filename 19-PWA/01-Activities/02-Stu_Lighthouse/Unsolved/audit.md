@@ -8,6 +8,16 @@ Click on "Expand View" to get more information about the metrics. Make note of t
 
 * First Contentful Paint: 1.0s
 
+* Registers a service worker that controls page and start_url
+
+* Configured for a custom splash screen
+
+* Sets a theme color for the address bar
+
+* Content is sized correctly for the viewport
+
+* Has a <meta name="viewport"> tag with width or initial-scale
+
 * (include as many bullet points as necessary)
 
 ## PWA optimizations

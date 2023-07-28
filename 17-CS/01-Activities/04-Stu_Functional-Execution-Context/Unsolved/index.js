@@ -5,9 +5,12 @@ function avg(array) {
     for(let i = 0; i < array.length; i++) {
       total += array[i];
     }
+    return total;
   }
   
   return total/array.length;
 }
 
+const tempArray = [1, 5, 10, 15, 20]
+avg(tempArray);
 module.exports = avg;

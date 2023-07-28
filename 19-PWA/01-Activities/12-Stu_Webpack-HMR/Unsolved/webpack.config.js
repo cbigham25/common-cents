@@ -10,6 +10,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   // TODO: Add devServer object
+  devServer: {
+    hot: 'only',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',

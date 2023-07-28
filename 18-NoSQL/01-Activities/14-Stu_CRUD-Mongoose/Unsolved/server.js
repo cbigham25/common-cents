@@ -57,10 +57,36 @@ app.delete('/find-one-delete/:genre', async (req, res) => {
 });
 
 app.put('/find-one-update/:genre', async (req, res) => {
+  try {
+    const genre = req.params.genre;
+    const newName = req.body.newName; // Assuming the new name is sent in the request body
+    
+    // Find the first document that contains a name with the value equal to 'Kids'
+    const document = await YourModel.findOne({ name: 'Kids', genre });
+
+    if (!document) {
+      return res.status(404).json({ message: 'Document not found.' });
+    }
+
+    // Update the name with the value from the URL param
+    document.name = newName;
+
+    // Save the updated document
+    await document.save();
+
+    // Return the updated document
+    res.json(document);
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
   // TODO: Write a route that will find the first instance of a document that contains a name with the value equal to 'Kids'
   // Update that name with the value given from the URL param
   // Return the updated document
-});
+
 
 db.once('open', () => {
   app.listen(PORT, () => {
