@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { LoginPage } from './components/Login/LoginPage';
+
 
 function App() {
   return (
@@ -20,6 +23,16 @@ function App() {
       </header>
     </div>
   );
+
+
+  //app is defined but never used??
+  function App() {
+    return (
+      <div className="App">
+        <LoginPage />
+      </div>
+    );
+  }
 }
 
 export default App;
