@@ -1,0 +1,53 @@
+[
+    {
+      "amount": 100.25,
+      "category": "Food",
+      "user": "Brian Kernighan"
+    },
+    {
+      "amount": 200.50,
+      "category": "Transport",
+      "user": "Max Kanat-Alexander"
+    },
+    {
+      "amount": 50.75,
+      "category": "Entertainment",
+      "user": "Why The Lucky Stiff"
+    },
+    {
+      "amount": 250.00,
+      "category": "Utilities",
+      "user": "Kent Beck"
+    },
+    {
+      "amount": 300.00,
+      "category": "Rent",
+      "user": "Edward V. Berard"
+    },
+    {
+      "amount": 20.00,
+      "category": "Groceries",
+      "user": "Alan Kay"
+    },
+    {
+      "amount": 150.30,
+      "category": "Shopping",
+      "user": "C.A.R. Hoare"
+    },
+    {
+      "amount": 75.90,
+      "category": "Health",
+      "user": "David Thomas"
+    },
+    {
+      "amount": 45.60,
+      "category": "Books",
+      "user": "Donald Knuth"
+    },
+    {
+      "amount": 110.20,
+      "category": "Education",
+      "user": "Lernantino"
+    }
+  ]
+  
