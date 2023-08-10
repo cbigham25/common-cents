@@ -10,8 +10,10 @@ import React from 'react';
 import LoginPage from './components/Login/LoginPage';
 import SignUpPage from './components/Signup/SignupPage';
 import BudgetForm from './components/Budget/Index'
+import { useState } from 'react';
 import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import EditBudget from './components/Edit-Budget/editBudget';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -37,9 +39,27 @@ const client = new ApolloClient({
 });
 
 
-//app is defined but never used??
-// It was because there were two "App()" functions 
+// eslint-disabled just allows us to move forward for now by avoiding the ESlint warnings.
+// We need to utilize these variables to make it functional
 function App() {
+  const [budgets, setBudgets] = useState([]);
+  const [editingBudget, setEditingBudget] = useState(null); // eslint-disable-line no-unused-vars
+
+  const handleBudgetSubmit = (newBudget) => { // eslint-disable-line no-unused-vars
+    setBudgets([...budgets, newBudget]);
+  };
+
+  const handleEditBudget = (budget) => { // eslint-disable-line no-unused-vars
+    setEditingBudget(budget);
+  };
+
+  const handleUpdateBudget = (updatedBudget) => { // eslint-disable-line no-unused-vars
+    const updatedBudgets = budgets.map((b) =>
+      b.id === updatedBudget.id ? updatedBudget : b
+    );
+    setBudgets(updatedBudgets);
+    setEditingBudget(null);
+  };
   return (<ApolloProvider client={client}>
     <Router>
       <div className="flex-column justify-flex-start min-100-vh">
@@ -50,6 +70,10 @@ function App() {
               path="/"
               element={<BudgetForm />}
             />
+            <Route 
+              path="/edit/:budgetId"
+              element={<EditBudget />}
+              />
             <Route
               path="/login"
               element={<LoginPage />}
