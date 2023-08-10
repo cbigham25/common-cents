@@ -1,6 +1,5 @@
 import decode from "jwt-decode";
 
-
 //From Caleb: I just copied over the client auth code from Bob's cars.
 // We will need to edit this to fit in with our auth backend. 
 class AuthService {
