@@ -24,4 +24,4 @@ const expenseSchema = new Schema({
 
 const Expense = model('Expense', expenseSchema);
 
-module.exports = Thought;
+module.exports = Expense;
