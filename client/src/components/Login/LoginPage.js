@@ -1,31 +1,79 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formState, setFormState] = useState({ username: "", password: "" });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
-  // feel free to update
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      username: "",
+      password: "",
+    });
+  };
+
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <>
+      {data ? (
+        <p>
+          Success!{" "}
+          <Link to="/">back to the homepage.</Link>
+        </p>
+      ) : (
+        <form onSubmit={handleFormSubmit}>
+          <input
+            className="form-input"
+            placeholder="Your Username"
+            name="username"
+            type="text"
+            value={formState.username}
+            onChange={handleChange}
+          />
+          <br />
+          <input
+            className="form-input"
+            placeholder="******"
+            name="password"
+            type="password"
+            value={formState.password}
+            onChange={handleChange}
+          />
+          <br />
+          <button style={{ cursor: "pointer" }} type="submit">
+            Login
+          </button>
+        </form>
+      )}
+
+      {error && <div>{error.message}</div>}
+    </>
   );
 };
 
