@@ -9,7 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import React from 'react';
 import LoginPage from './components/Login/LoginPage';
 import SignUpPage from './components/Signup/SignupPage';
-import BudgetForm from './components/Budget/Index'
+import BudgetForm from './components/Budget/Budget'
 import { useState } from 'react';
 import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -70,10 +70,10 @@ function App() {
               path="/"
               element={<BudgetForm />}
             />
-            <Route 
+            <Route
               path="/edit/:budgetId"
               element={<EditBudget />}
-              />
+            />
             <Route
               path="/login"
               element={<LoginPage />}
