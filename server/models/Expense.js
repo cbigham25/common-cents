@@ -19,7 +19,14 @@ const expenseSchema = new Schema({
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
-  }
+  },
+  month: {
+    type: String,
+    validate: {
+      validator: (value) => /^((0[1-9])|(1[0-2]))\d{2}$/.test(value),
+      message: '{VALUE} is not a valid month/year format'
+    }
+  },
 });
 
 const Expense = model('Expense', expenseSchema);
