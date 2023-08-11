@@ -1,53 +1,62 @@
 [
-    {
-      "amount": 100.25,
-      "category": "Food",
-      "user": "Brian Kernighan"
-    },
-    {
-      "amount": 200.50,
-      "category": "Transport",
-      "user": "Max Kanat-Alexander"
-    },
-    {
-      "amount": 50.75,
-      "category": "Entertainment",
-      "user": "Why The Lucky Stiff"
-    },
-    {
-      "amount": 250.00,
-      "category": "Utilities",
-      "user": "Kent Beck"
-    },
-    {
-      "amount": 300.00,
-      "category": "Rent",
-      "user": "Edward V. Berard"
-    },
-    {
-      "amount": 20.00,
-      "category": "Groceries",
-      "user": "Alan Kay"
-    },
-    {
-      "amount": 150.30,
-      "category": "Shopping",
-      "user": "C.A.R. Hoare"
-    },
-    {
-      "amount": 75.90,
-      "category": "Health",
-      "user": "David Thomas"
-    },
-    {
-      "amount": 45.60,
-      "category": "Books",
-      "user": "Donald Knuth"
-    },
-    {
-      "amount": 110.20,
-      "category": "Education",
-      "user": "Lernantino"
-    }
-  ]
-  
+  {
+    "amount": 100.25,
+    "category": "Food",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 200.50,
+    "category": "Transport",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 50.75,
+    "category": "Entertainment",
+    "user": "Johnny Test",
+    "month": "0723" 
+  },
+  {
+    "amount": 250.00,
+    "category": "Utilities",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 300.00,
+    "category": "Rent",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 20.00,
+    "category": "Groceries",
+    "user": "Johnny Test",
+    "month": "0923" 
+  },
+  {
+    "amount": 150.30,
+    "category": "Shopping",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 75.90,
+    "category": "Health",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 45.60,
+    "category": "Books",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 110.20,
+    "category": "Education",
+    "user": "Johnny Test",
+    "month": "0823"
+  }
+]
