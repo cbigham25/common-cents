@@ -18,7 +18,7 @@ const Budget = () => {
 
   const fetchBudgets = async () => {
     try {
-      const response = await axios.get('/api/budgets'); // We need to replace the endpoints with the proper endpoints
+      const response = await axios.get('/api/budgets'); 
       setBudgets(response.data);
     } catch (error) {
       console.error('Error fetching budgets:', error);
@@ -35,7 +35,7 @@ const Budget = () => {
     e.preventDefault();
     try {
       const updatedBudget = { id: editingBudget.id, name: budgetName, amount: amount, need: selectedNeed, needAmounts: { ...needAmounts } };
-      await axios.put(`/api/budgets/${editingBudget.id}`, updatedBudget); // Must replace with proper endpoints
+      await axios.put(`/api/budgets/${editingBudget.id}`, updatedBudget); 
       fetchBudgets();
       setEditingBudget(null);
       setBudgetName('');
