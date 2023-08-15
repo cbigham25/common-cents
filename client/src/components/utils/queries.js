@@ -14,3 +14,17 @@ query Query($username: String!) {
   }
 }
 `;
+
+export const QUERY_EXPENSES = gql`
+query Query($username: String, $category: String) {
+  expenses(username: $username, category: $category) {
+    _id
+    amount
+    category
+  }
+}
+`;
+
+
+
+
