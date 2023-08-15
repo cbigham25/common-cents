@@ -1,86 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries.js';
+import Auth from '../utils/auth'
 
-const BudgetForm = ({ onSubmit }) => {
-  const [budgetName, setBudgetName] = useState('');
-  const [amount, setAmount] = useState('');
-  const [selectedNeed, setSelectedNeed] = useState('Groceries');
-  const [needsList] = useState([
-    'Groceries',
-    'Gas',
-    'Debt',
-    'Rent',
-    'Bills',
-    'Other'
-  ]);
-  const [needAmounts, setNeedAmounts] = useState({
-    Groceries: '',
-    Gas: '',
-    Debt: '',
-    Rent: '',
-    Bills: '',
-    Other: ''
+const BudgetForm = () => {
+  const username = Auth.getProfile().data.username;
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: username }
   });
+  
 
-  const handleNeedAmountChange = (need, value) => {
-    setNeedAmounts(prevAmounts => ({ ...prevAmounts, [need]: value }));
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (budgetName && amount && selectedNeed) {
-      onSubmit({
-        name: budgetName,
-        amount,
-        need: selectedNeed,
-        needAmounts: { ...needAmounts }
-      });
-      setBudgetName('');
-      setAmount('');
-      setSelectedNeed('Groceries');
-      setNeedAmounts({
-        Groceries: '',
-        Gas: '',
-        Debt: '',
-        Rent: '',
-        Bills: '',
-        Other: ''
-      });
-    }
-  };
+
+  const userExpenses = data?.user?.expenses;
+  const totalExpenses = userExpenses?.reduce((acc, expense) => acc + expense.amount, 0) || 0;
+
 
   return (
-    <div>
-      <h2>Create New Budget</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Budget Name:</label>
-          <input type="text" value={budgetName} onChange={(e) => setBudgetName(e.target.value)} />
-        </div>
-        <div>
-          <label>Amount:</label>
-          <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
-        </div>
-        <div>
-          <label>Need:</label>
-          <select value={selectedNeed} onChange={(e) => setSelectedNeed(e.target.value)}>
-            {needsList.map((need) => (
-              <option key={need} value={need}>
-                {need}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Amount for {selectedNeed}:</label>
-          <input
-            type="number"
-            value={needAmounts[selectedNeed]}
-            onChange={(e) => handleNeedAmountChange(selectedNeed, e.target.value)}
-          />
-        </div>
-        <button type="submit">Create Budget</button>
-      </form>
-    </div>
+    <section className='budgetContainer'>
+      <h1>Hello, {Auth.getProfile().data.username}</h1>
+      <p>Your total expenses: {totalExpenses}</p>
+    </section>
   );
 };
 
