@@ -1,17 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_EXPENSES } from '../utils/queries.js';
 import Auth from '../utils/auth'
 
-const BudgetForm = () => {
-  const username = Auth.getProfile().data.username;
-  const { loading, data } = useQuery(QUERY_USER, {
-    variables: { username: username }
-  });
 
-  const [categoryTotals, setCategoryTotals] = useState({});
-
+function BudgetForm() {
+  const { username } = Auth.getProfile().data;
 
   const categoryArray = [
     "Rent",
@@ -31,19 +26,22 @@ const BudgetForm = () => {
     "OtherNeeds"   // To differentiate from "Other" under "Needs"
   ];
 
+  const { loading, data } = useQuery(QUERY_EXPENSES, {
+    variables: { username: username, category: categoryArray },
+  });
+
+  const [categoryTotals, setCategoryTotals] = useState({});
+
   useEffect(() => {
     if (!loading) {
       categoryArray.forEach(category => {
-        const { data: categoryData } = useQuery(QUERY_EXPENSES, {
-          variables: { username: username, category: category }
-        });
-
-        const categoryExpenses = categoryData?.expenses || [];
+        // Perform the necessary query operations
+        const categoryExpenses = data?.expenses || [];
         const categoryTotal = categoryExpenses.reduce((acc, expense) => acc + expense.amount, 0);
         setCategoryTotals(prevTotals => ({ ...prevTotals, [category]: categoryTotal }));
       });
     }
-  }, [loading]);
+  }, [loading, categoryArray]);
 
   if (loading) {
     return <div>Loading...</div>;
