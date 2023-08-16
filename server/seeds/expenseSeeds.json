@@ -1,21 +1,9 @@
 [
   {
-    "amount": 100.25,
-    "category": "Food",
+    "amount": 300.00,
+    "category": "Rent",
     "user": "Johnny Test",
     "month": "0823"
-  },
-  {
-    "amount": 200.50,
-    "category": "Transport",
-    "user": "Johnny Test",
-    "month": "0823"
-  },
-  {
-    "amount": 50.75,
-    "category": "Entertainment",
-    "user": "Johnny Test",
-    "month": "0723" 
   },
   {
     "amount": 250.00,
@@ -24,20 +12,14 @@
     "month": "0823"
   },
   {
-    "amount": 300.00,
-    "category": "Rent",
+    "amount": 20.00,
+    "category": "Groceries",
     "user": "Johnny Test",
     "month": "0823"
   },
   {
-    "amount": 20.00,
-    "category": "Groceries",
-    "user": "Johnny Test",
-    "month": "0923" 
-  },
-  {
     "amount": 150.30,
-    "category": "Shopping",
+    "category": "Clothing",
     "user": "Johnny Test",
     "month": "0823"
   },
@@ -49,14 +31,104 @@
   },
   {
     "amount": 45.60,
-    "category": "Books",
+    "category": "OtherWants",
     "user": "Johnny Test",
     "month": "0823"
   },
   {
     "amount": 110.20,
-    "category": "Education",
+    "category": "OtherNeeds",
     "user": "Johnny Test",
     "month": "0823"
-  }
+  },
+  {
+    "amount": 90.00,
+    "category": "Insurance",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 70.50,
+    "category": "Dining",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 130.25,
+    "category": "Fun",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 55.55,
+    "category": "Products",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 105.50,
+    "category": "Vacation",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 85.40,
+    "category": "Health",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 125.00,
+    "category": "Groceries",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 320.00,
+    "category": "Debt",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 50.50,
+    "category": "OtherWants",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 95.20,
+    "category": "Dining",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 60.10,
+    "category": "Fun",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 45.30,
+    "category": "Products",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 130.00,
+    "category": "Clothing",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 500.00,
+    "category": "Vacation",
+    "user": "Johnny Test",
+    "month": "0823"
+  },
+  {
+    "amount": 120.25,
+    "category": "OtherNeeds",
+    "user": "Johnny Test",
+    "month": "0823"
+  }  
 ]
