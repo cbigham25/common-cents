@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import React from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
 import Auth from '../utils/auth'
@@ -114,7 +113,7 @@ const BudgetForm = () => {
                       Vacation
                     </option>
                   </select>
-                  <input id="expenseInput" type="number" placeholder="0.00" min={"0"} required /><span class="validity"></span>  <div>
+                  <input id="expenseInput" type="float" placeholder="0.00" min={"0"} required /><span class="validity"></span>  <div>
                     <input type="submit" />
                   </div>
                 </div>
@@ -125,7 +124,7 @@ const BudgetForm = () => {
             <div id="addIncome" style={{ display: "none" }}>
               <div>
                 <form>
-                  <input id="incomeInput" type="number" placeholder="0.00" min={"0"} required />
+                  <input id="incomeInput" type="float" placeholder="0.00" min={"0"} required />
                   <span class="validity"></span>
                   <div>
                     <input type="submit" />
