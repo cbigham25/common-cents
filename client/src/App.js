@@ -14,7 +14,6 @@ import { useState } from 'react';
 import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EditBudget from './components/Edit-Budget/editBudget';
-import Auth from './components/utils/auth'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
