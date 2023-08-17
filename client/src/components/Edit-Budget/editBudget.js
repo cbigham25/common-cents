@@ -1,5 +1,6 @@
 import React from "react"; //The budget.js and editBudget.js codes may need some changes for functionality
 import { useState, useEffect } from 'react';
+import './editBudget.css'
 
 const EditBudget = ({ budget, onUpdate }) => {
   const [budgetName, setBudgetName] = useState('');
