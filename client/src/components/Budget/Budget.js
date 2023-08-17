@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './budget.css';
 
 const BudgetForm = ({ onSubmit }) => {
   const [budgetName, setBudgetName] = useState('');
