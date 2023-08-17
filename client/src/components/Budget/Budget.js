@@ -1,7 +1,4 @@
-import React, { useState } from "react";
 import './budget.css';
-import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
 import Auth from '../utils/auth'

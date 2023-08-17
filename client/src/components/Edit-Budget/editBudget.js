@@ -1,4 +1,4 @@
-import React from "react"; //The budget.js and editBudget.js codes may need some changes for functionality
+import React from "react"; 
 import { useState, useEffect } from 'react';
 import './editBudget.css';
 
