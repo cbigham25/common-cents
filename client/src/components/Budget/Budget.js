@@ -62,13 +62,13 @@ const BudgetForm = () => {
         <>
           <section className='budgetContainer'>
             <h1>Hello, {Auth.getProfile().data.username}</h1>
- <p>Total Spent / Monthly Income {totalExpenses} / {totalIncome}</p>
+            <p>Total Spent / Monthly Income {totalExpenses} / {totalIncome}</p>
             <button onClick={() => revealEl("addExpense")}>Add Expense</button>
             <div id="addExpense" style={{ display: "none" }}>
               <form>
                 <div>
                   <select name="expenses" id="expenses">
-                  <option value="rent">
+                    <option value="rent">
                       Rent
                     </option>
                     <option value="Utilities">
@@ -133,9 +133,6 @@ const BudgetForm = () => {
                 </form>
               </div>
             </div>
-=======
-           
-
             <section className="needsContainer">
               <h2>Needs</h2>
               <p>Rent: {aggregatedExpenses.Rent || 0}</p>
