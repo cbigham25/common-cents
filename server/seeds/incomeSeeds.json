@@ -1,0 +1,20 @@
+[
+    {
+      "amount": 1500.00,
+      "category": "Paycheck",
+      "user": "Johnny Test",
+      "month": "0823"
+    },
+    {
+      "amount": 1500.00,
+      "category": "Paycheck",
+      "user": "Johnny Test",
+      "month": "0823"
+    },
+    {
+        "amount": 250.00,
+        "category": "Sold",
+        "user": "Johnny Test",
+        "month": "0823"
+    }
+]
