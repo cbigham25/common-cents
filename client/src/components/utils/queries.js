@@ -11,6 +11,12 @@ query Query($username: String!) {
       category
       createdAt
     }
+    incomes {
+      _id
+      amount
+      category
+      createdAt
+    }
   }
 }
 `;
