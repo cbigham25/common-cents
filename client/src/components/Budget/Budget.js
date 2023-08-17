@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
 import Auth from '../utils/auth'
+import './budget.css'
 
 const BudgetForm = () => {
 
