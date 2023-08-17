@@ -19,6 +19,12 @@ const BudgetForm = () => {
   const userExpenses = data?.user?.expenses;
   const totalExpenses = userExpenses?.reduce((acc, expense) => acc + expense.amount, 0) || 0;
 
+  const userIncomes = data?.user?.incomes;
+  const totalIncome = userIncomes?.reduce((acc, income) => acc + income.amount, 0) || 0;
+
+  console.log(data?.user)
+  console.log(data?.user?.incomes)
+
   const aggregateExpensesByCategory = (expenses) => {
     return expenses.reduce((acc, expense) => {
       if (acc[expense.category]) {
@@ -47,7 +53,7 @@ const BudgetForm = () => {
         <>
           <section className='budgetContainer'>
             <h1>Hello, {Auth.getProfile().data.username}</h1>
-            <p>Your total expenses: {totalExpenses}</p>
+            <p>Total Spent / Monthly Income {totalExpenses} / {totalIncome}</p>
             <section className="needsContainer">
               <h2>Needs</h2>
               <p>Rent: {aggregatedExpenses.Rent || 0}</p>
