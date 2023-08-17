@@ -13,6 +13,7 @@ import BudgetForm from './components/Budget/Budget'
 import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EditBudget from './components/Edit-Budget/editBudget';
+import Auth from './components/utils/auth'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,7 +42,6 @@ const client = new ApolloClient({
 // eslint-disabled just allows us to move forward for now by avoiding the ESlint warnings.
 // We need to utilize these variables to make it functional
 function App() {
-
   return (<ApolloProvider client={client}>
     <Router>
       <div className="flex-column justify-flex-start min-100-vh">

@@ -1,5 +1,6 @@
 {
   "name": "common-cents",
+<<<<<<< HEAD
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,6 +19,11 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+=======
+  "version": "0.1.1",
+  "description": "",
+  "main": "server/server.js",
+>>>>>>> b847d5588d422dd7bdaa7c7c3f7ab238521ca900
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
@@ -25,22 +31,11 @@
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "dependencies": {}
 }

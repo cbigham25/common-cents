@@ -1,86 +1,81 @@
 import React, { useState } from "react";
 import './budget.css';
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries.js';
+import Auth from '../utils/auth'
 
-const BudgetForm = ({ onSubmit }) => {
-  const [budgetName, setBudgetName] = useState('');
-  const [amount, setAmount] = useState('');
-  const [selectedNeed, setSelectedNeed] = useState('Groceries');
-  const [needsList] = useState([
-    'Groceries',
-    'Gas',
-    'Debt',
-    'Rent',
-    'Bills',
-    'Other'
-  ]);
-  const [needAmounts, setNeedAmounts] = useState({
-    Groceries: '',
-    Gas: '',
-    Debt: '',
-    Rent: '',
-    Bills: '',
-    Other: ''
+const BudgetForm = () => {
+
+  const username = Auth.getProfile().data.username;
+
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: username }
   });
 
-  const handleNeedAmountChange = (need, value) => {
-    setNeedAmounts(prevAmounts => ({ ...prevAmounts, [need]: value }));
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (budgetName && amount && selectedNeed) {
-      onSubmit({
-        name: budgetName,
-        amount,
-        need: selectedNeed,
-        needAmounts: { ...needAmounts }
-      });
-      setBudgetName('');
-      setAmount('');
-      setSelectedNeed('Groceries');
-      setNeedAmounts({
-        Groceries: '',
-        Gas: '',
-        Debt: '',
-        Rent: '',
-        Bills: '',
-        Other: ''
-      });
-    }
-  };
+  const userExpenses = data?.user?.expenses;
+  const totalExpenses = userExpenses?.reduce((acc, expense) => acc + expense.amount, 0) || 0;
+
+  const aggregateExpensesByCategory = (expenses) => {
+    return expenses.reduce((acc, expense) => {
+      if (acc[expense.category]) {
+        acc[expense.category] += expense.amount;
+      } else {
+        acc[expense.category] = expense.amount;
+      }
+      return acc;
+    }, {});
+  }
+
+  const expenses = data?.user?.expenses;
+
+  let aggregatedExpenses = 0;
+
+  if (expenses) {
+    aggregatedExpenses = aggregateExpensesByCategory(expenses);
+  }
+
+  console.log(aggregatedExpenses);
+
 
   return (
     <div>
-      <h2>Create New Budget</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Budget Name:</label>
-          <input type="text" value={budgetName} onChange={(e) => setBudgetName(e.target.value)} />
-        </div>
-        <div>
-          <label>Amount:</label>
-          <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
-        </div>
-        <div>
-          <label>Need:</label>
-          <select value={selectedNeed} onChange={(e) => setSelectedNeed(e.target.value)}>
-            {needsList.map((need) => (
-              <option key={need} value={need}>
-                {need}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Amount for {selectedNeed}:</label>
-          <input
-            type="number"
-            value={needAmounts[selectedNeed]}
-            onChange={(e) => handleNeedAmountChange(selectedNeed, e.target.value)}
-          />
-        </div>
-        <button type="submit">Create Budget</button>
-      </form>
+      {Auth.loggedIn() ? (
+        <>
+          <section className='budgetContainer'>
+            <h1>Hello, {Auth.getProfile().data.username}</h1>
+            <p>Your total expenses: {totalExpenses}</p>
+            <section className="needsContainer">
+              <h2>Needs</h2>
+              <p>Rent: {aggregatedExpenses.Rent || 0}</p>
+              <p>Utilities:{aggregatedExpenses.Utilities || 0}</p>
+              <p>Taxes: {aggregatedExpenses.Taxes || 0}</p>
+              <p>Insurance: {aggregatedExpenses.Insurance || 0}</p>
+              <p>Bills: {aggregatedExpenses.Bills || 0}</p>
+              <p>Health: {aggregatedExpenses.Health || 0}</p>
+              <p>Groceries: {aggregatedExpenses.Groceries || 0}</p>
+              <p>Debt: {aggregatedExpenses.Debt || 0}</p>
+              <p>Other: {aggregatedExpenses.OtherNeeds || 0}</p>
+            </section>
+            <section className="wantsContainer">
+              <h2>Wants</h2>
+              <p>Dining: {aggregatedExpenses.Dining || 0}</p>
+              <p>Fun: {aggregatedExpenses.Fun || 0}</p>
+              <p>Products: {aggregatedExpenses.Products || 0}</p>
+              <p>Clothing: {aggregatedExpenses.Clothing || 0}</p>
+              <p>Vacation: {aggregatedExpenses.Vacation || 0}</p>
+              <p>Other: {aggregatedExpenses.OtherWants || 0}</p>
+            </section>
+          </section>
+        </>) : (
+        <p>Please login to or create your account from the links above! </p>
+      )
+      }
     </div>
   );
 };
