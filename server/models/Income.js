@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
@@ -36,4 +32,3 @@ const incomeSchema = new Schema({
 const Income = model('Income', incomeSchema);
 
 module.exports = Income;
->>>>>>> 112c1b1c341d3ecb61953c6cffb7e81e34d7c56e
