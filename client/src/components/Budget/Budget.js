@@ -1,14 +1,44 @@
 import './budget.css';
 import React from "react";
 import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
+import { ADD_EXPENSE } from "../utils/mutations.js";
 import Auth from '../utils/auth'
+import './budget.css'
 
 const BudgetForm = () => {
 
   const username = Auth.getProfile().data.username;
 
-  const { loading, data } = useQuery(QUERY_USER, {
+  const [addExpense, { error }] = useMutation(ADD_EXPENSE);
+
+  const handleExpenseSubmit = async (event) => {
+    event.preventDefault();
+
+    const expenseAmount = parseFloat(document.getElementById('expenseInput').value);
+    const expenseCategory = document.getElementById('expenses').value;
+
+    try {
+      const { data } = await addExpense({
+        variables: {
+          // assuming your mutation requires an amount and category. Adjust accordingly.
+          amount: expenseAmount,
+          category: expenseCategory,
+          username: username
+        }
+      });
+
+      refetch();
+
+    } catch (err) {
+      console.error(err);
+      // Handle the error as needed.
+    }
+  };
+
+
+  const { loading, data, refetch } = useQuery(QUERY_USER, {
     variables: { username: username }
   });
 
@@ -46,6 +76,19 @@ const BudgetForm = () => {
 
   console.log(aggregatedExpenses);
 
+  const NEEDS_CATEGORIES = ["Rent", "Utilities", "Taxes", "Insurance", "Bills", "Health", "Groceries", "Debt", "OtherNeeds"];
+  const WANTS_CATEGORIES = ["Dining", "Fun", "Products", "Clothing", "Vacation", "OtherWants"];
+
+  const getTotalForCategories = (aggregatedExpenses, categories) => {
+    return categories.reduce((total, category) => {
+      return total + (aggregatedExpenses[category] || 0);
+    }, 0);
+  };
+
+  const needsTotal = getTotalForCategories(aggregatedExpenses, NEEDS_CATEGORIES);
+  const wantsTotal = getTotalForCategories(aggregatedExpenses, WANTS_CATEGORIES);
+
+
   const revealEl = (id) => {
     var x = document.getElementById(id);
     if (x.style.display === "none") {
@@ -65,10 +108,10 @@ const BudgetForm = () => {
             <p>Total Spent / Monthly Income {totalExpenses} / {totalIncome}</p>
             <button onClick={() => revealEl("addExpense")}>Add Expense</button>
             <div id="addExpense" style={{ display: "none" }}>
-              <form>
+              <form onSubmit={handleExpenseSubmit}>
                 <div>
                   <select name="expenses" id="expenses">
-                    <option value="rent">
+                    <option value="Rent">
                       Rent
                     </option>
                     <option value="Utilities">
@@ -104,9 +147,6 @@ const BudgetForm = () => {
                     <option value="Products">
                       Products
                     </option>
-                    <option value="rent">
-                      rent
-                    </option>
                     <option value="Clothing">
                       Clothing
                     </option>
@@ -114,7 +154,7 @@ const BudgetForm = () => {
                       Vacation
                     </option>
                   </select>
-                  <input id="expenseInput" type="float" placeholder="0.00" min={"0"} required /><span class="validity"></span>  <div>
+                  <input id="expenseInput" type="float" placeholder="0.00" min={"0"} required /><span className="validity"></span>  <div>
                     <input type="submit" />
                   </div>
                 </div>
@@ -126,7 +166,7 @@ const BudgetForm = () => {
               <div>
                 <form>
                   <input id="incomeInput" type="float" placeholder="0.00" min={"0"} required />
-                  <span class="validity"></span>
+                  <span className="validity"></span>
                   <div>
                     <input type="submit" />
                   </div>
@@ -134,7 +174,7 @@ const BudgetForm = () => {
               </div>
             </div>
             <section className="needsContainer">
-              <h2>Needs</h2>
+              <h2>Needs {needsTotal} / {totalIncome * 0.7}</h2>
               <p>Rent: {aggregatedExpenses.Rent || 0}</p>
               <p>Utilities:{aggregatedExpenses.Utilities || 0}</p>
               <p>Taxes: {aggregatedExpenses.Taxes || 0}</p>
@@ -146,7 +186,7 @@ const BudgetForm = () => {
               <p>Other: {aggregatedExpenses.OtherNeeds || 0}</p>
             </section>
             <section className="wantsContainer">
-              <h2>Wants</h2>
+              <h2>Wants {wantsTotal} / {totalIncome * 0.3}</h2>
               <p>Dining: {aggregatedExpenses.Dining || 0}</p>
               <p>Fun: {aggregatedExpenses.Fun || 0}</p>
               <p>Products: {aggregatedExpenses.Products || 0}</p>

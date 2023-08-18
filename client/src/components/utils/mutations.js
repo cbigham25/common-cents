@@ -22,5 +22,20 @@ const ADD_USER = gql`
   }
 `;
 
+const ADD_EXPENSE = gql`
+  mutation addExpense($amount: Float!, $category: String!, $username: String!) {
+    addExpense(amount: $amount, category: $category, username: $username) {
+      _id
+      amount
+      category
+      user {
+        username
+      }
+    }
+  }
+`;
 
-export { LOGIN_USER, ADD_USER };
+
+
+
+export { LOGIN_USER, ADD_USER, ADD_EXPENSE };

@@ -68,26 +68,42 @@ const resolvers = {
 
             return { token, user };
         },
-        addExpense: async (parent, { amount, category }, context) => {
-            if (context.user) {
-                const currentDate = new Date();
-                const monthYear = `${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().slice(-2)}`;
+        // addExpense: async (parent, { amount, category }, context) => {
+        //     console.log(context.user)
+        //     if (context.user) {
+        //         const currentDate = new Date();
+        //         const monthYear = `${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().slice(-2)}`;
 
-                const expense = await Expense.create({
-                    amount,
-                    category,
-                    user: context.user._id,
-                    month: monthYear
-                });
+        //         const expense = await Expense.create({
+        //             amount,
+        //             category,
+        //             user: context.user._id,
+        //             month: monthYear
+        //         });
 
-                await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { expenses: expense._id } }
-                );
+        //         await User.findOneAndUpdate(
+        //             { _id: context.user._id },
+        //             { $addToSet: { expenses: expense._id } }
+        //         );
 
-                return expense;
+        //         return expense;
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+        addExpense: async (_, { amount, category, username }, context) => {
+            const user = await User.findOne({ username: username });
+
+            if (!user) {
+                throw new Error('User not found');
             }
-            throw new AuthenticationError('You need to be logged in!');
+
+            const expense = new Expense({ amount, category, user: user._id });
+            await expense.save();
+
+            user.expenses.push(expense);
+            await user.save();
+
+            return expense;
         },
         removeExpense: async (parent, { expenseId }, context) => {
             if (context.user) {
@@ -109,19 +125,19 @@ const resolvers = {
             if (context.user) {
                 const currentDate = new Date();
                 const monthYear = `${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().slice(-2)}`;
-    
+
                 const income = await Income.create({
                     amount,
                     category,
                     user: context.user._id,
                     month: monthYear
                 });
-    
+
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { incomes: income._id } }
                 );
-    
+
                 return income;
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -132,16 +148,16 @@ const resolvers = {
                     _id: incomeId,
                     user: context.user._id,
                 });
-    
+
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $pull: { incomes: income._id } }
                 );
-    
+
                 return income;
             }
             throw new AuthenticationError('You need to be logged in!');
-        },    
+        },
     },
 };
 
