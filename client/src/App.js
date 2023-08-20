@@ -10,7 +10,7 @@ import React from 'react';
 import LoginPage from './components/Login/LoginPage';
 import SignUpPage from './components/Signup/SignupPage';
 import BudgetForm from './components/Budget/Budget'
-import Header from './components/Header';
+import Header from './components/Header/header'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EditBudget from './components/Edit-Budget/editBudget';
 
