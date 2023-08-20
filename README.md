@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Common Cents
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**License:** MIT
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+A collaborative MERN stack application that aids users in tracking their finances, categorizing expenses, and visualizing their spending habits. Designed and developed by Ben Antonneau, Caleb Bigham, and Blaine Duran.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Key Features](#key-features)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the repository to your local machine.
+2. Navigate to the root directory of the cloned repository in your terminal.
+3. Run `npm install` to install dependencies.
+4. Run `npm run seed` to seed local database
+5. Run `npm run develop` to concurrently start both the frontend and backend servers.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+The app is hosted with Heroku and AtlasDB and can be accessed at ``.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If running locally, the application can be accessed at `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Key Features
 
-### `npm run eject`
+### **Expense Tracking & Categorization**
+Users can log expenses, specifying the amount and category. The app provides an intuitive dashboard that displays the users spending in each category, compared to their income for the month. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **Data Visualization**
+With integrated charting libraries, users can view their spending habits via dynamic pie and bar charts. This assists in quickly identifying high-expenditure categories. (Feature still in development)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **Authentication & User Profiles**
+Through JWT authentication and secure password hashing, users can create profiles, securely log in, and have their financial data stored safely.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **Needs vs Wants Analysis**
+Based on the category of each expense, it is categorized as a need or a want. The budget calculated in the app is based on a standard 50-30-20 model, 50% to needs, 30% to wants, 20% for debt and savings. If followed, this will allow the user to afford for all their needs, pay off their debts, build savings, and understand how much they can spend on non-neccecities without stress.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Database Operations**
+Utilizing MongoDB, the application stores user profiles, transaction data, and offers CRUD operations for managing personal finances.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is licensed under the MIT License.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
+- **Ben Antonneau**
+- **Caleb Bigham**
+- **Blaine Duran**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Acknowledgments
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **MERN Stack**: An efficient combination of technologies - MongoDB, Express.js, React, and Node.js.
+- **JWT**: For user authentication and maintaining sessions.
+- **bcrypt.js**: For password hashing and ensuring user security.
+- **Charting Libraries**: Essential for data visualization and understanding spending trends.
+- **Mongoose**: Provides a straight-forward, schema-based solution to model application data with MongoDB.
