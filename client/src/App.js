@@ -12,7 +12,6 @@ import SignUpPage from './components/Signup/SignupPage';
 import BudgetForm from './components/Budget/Budget'
 import Header from './components/Header/header'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import EditBudget from './components/Edit-Budget/editBudget';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -50,10 +49,6 @@ function App() {
             <Route
               path="/"
               element={<BudgetForm />}
-            />
-            <Route
-              path="/edit/:budgetId"
-              element={<EditBudget />}
             />
             <Route
               path="/login"
