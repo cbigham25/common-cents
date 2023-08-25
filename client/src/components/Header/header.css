@@ -31,10 +31,6 @@ header button {
 
 header button:hover {
   background-color: #c2185b;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
   background-color: #009688;
   color: white;
 }
