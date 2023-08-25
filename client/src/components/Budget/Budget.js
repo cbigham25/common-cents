@@ -41,9 +41,9 @@ const BudgetForm = () => {
 
   const handleIncomeSubmit = async (event) => {
     event.preventDefault();
-  
+
     const incomeAmount = parseFloat(document.getElementById('incomeInput').value);
-  
+
     try {
       const { data } = await addIncome({
         variables: {
@@ -52,14 +52,14 @@ const BudgetForm = () => {
           username: username
         }
       });
-  
-      refetch(); 
-  
+
+      refetch();
+
     } catch (err) {
       console.error(err);
     }
   };
-  
+
 
 
   const { loading, data, refetch } = useQuery(QUERY_USER, {
@@ -130,7 +130,10 @@ const BudgetForm = () => {
           <section className='budgetContainer'>
             <h1>Hello, {Auth.getProfile().data.username}</h1>
             <p>Total Spent / Monthly Income {totalExpenses} / {totalIncome}</p>
-            <button onClick={() => revealEl("addExpense")}>Add Expense</button>
+            <div className='addValueButtonContainer'>
+              <button className='addExpenseButton' onClick={() => revealEl("addExpense")}>Add Expense</button>
+              <button className='addIncomeButton' onClick={() => revealEl("addIncome")}>Add Income</button>
+            </div>
             <div id="addExpense" style={{ display: "none" }}>
               <form onSubmit={handleExpenseSubmit}>
                 <div>
@@ -183,9 +186,7 @@ const BudgetForm = () => {
                   </div>
                 </div>
               </form>
-
             </div>
-            <button onClick={() => revealEl("addIncome")}>Add Income</button>
             <div id="addIncome" style={{ display: "none" }}>
               <div>
                 <form onSubmit={handleIncomeSubmit}>

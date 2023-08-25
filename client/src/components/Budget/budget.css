@@ -25,3 +25,7 @@
   font-size: 16px;
   margin: 5px 0;
 }
+
+.addExpenseButton {
+  margin-right: 10px;
+}
