@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
-import { ADD_EXPENSE } from "../utils/mutations.js";
+import { ADD_EXPENSE, ADD_INCOME } from "../utils/mutations.js";
 import Auth from '../utils/auth'
 import './budget.css'
 
@@ -12,6 +12,8 @@ const BudgetForm = () => {
   const username = Auth.getProfile().data.username;
 
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
+  const [addIncome, { error: incomeError }] = useMutation(ADD_INCOME);
+
 
   const handleExpenseSubmit = async (event) => {
     event.preventDefault();
@@ -36,6 +38,28 @@ const BudgetForm = () => {
       // Handle the error as needed.
     }
   };
+
+  const handleIncomeSubmit = async (event) => {
+    event.preventDefault();
+  
+    const incomeAmount = parseFloat(document.getElementById('incomeInput').value);
+  
+    try {
+      const { data } = await addIncome({
+        variables: {
+          category: "Income",
+          amount: incomeAmount,
+          username: username
+        }
+      });
+  
+      refetch(); 
+  
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
 
 
   const { loading, data, refetch } = useQuery(QUERY_USER, {
@@ -164,7 +188,7 @@ const BudgetForm = () => {
             <button onClick={() => revealEl("addIncome")}>Add Income</button>
             <div id="addIncome" style={{ display: "none" }}>
               <div>
-                <form>
+                <form onSubmit={handleIncomeSubmit}>
                   <input id="incomeInput" type="float" placeholder="0.00" min={"0"} required />
                   <span className="validity"></span>
                   <div>

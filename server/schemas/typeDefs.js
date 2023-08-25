@@ -45,7 +45,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addExpense(amount: Float!, category: String!, username: String!): Expense
     removeExpense(expenseId: ID!): Expense
-    addIncome(amount: Float!, category: String): Income
+    addIncome(amount: Float!, category: String, username: String!): Income
     removeIncome(incomeId: ID!): Income
   }
 `;
