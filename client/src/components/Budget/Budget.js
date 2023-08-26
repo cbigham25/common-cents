@@ -113,14 +113,18 @@ const BudgetForm = () => {
   const wantsTotal = getTotalForCategories(aggregatedExpenses, WANTS_CATEGORIES);
 
 
-  const revealEl = (id) => {
-    var x = document.getElementById(id);
-    if (x.style.display === "none") {
-      x.style.display = "block";
+  const revealEl = (idToShow, idToHide) => {
+    const elToShow = document.getElementById(idToShow);
+    const elToHide = document.getElementById(idToHide);
+
+    if (elToShow.style.display === "none") {
+      elToShow.style.display = "block";
+      elToHide.style.display = "none";
     } else {
-      x.style.display = "none";
+      elToShow.style.display = "none";
     }
   }
+
 
 
   return (
@@ -131,12 +135,13 @@ const BudgetForm = () => {
             <h1>Hello, {Auth.getProfile().data.username}</h1>
             <p>Total Spent / Monthly Income {totalExpenses} / {totalIncome}</p>
             <div className='addValueButtonContainer'>
-              <button className='addExpenseButton' onClick={() => revealEl("addExpense")}>Add Expense</button>
-              <button className='addIncomeButton' onClick={() => revealEl("addIncome")}>Add Income</button>
+              <button className='addExpenseButton' onClick={() => revealEl("addExpense", "addIncome")}>Add Expense</button>
+              <button className='addIncomeButton' onClick={() => revealEl("addIncome", "addExpense")}>Add Income</button>
             </div>
             <div id="addExpense" style={{ display: "none" }}>
               <form onSubmit={handleExpenseSubmit}>
                 <div className='addExpenseFormContainer'>
+                  <p><b>Add Expense</b></p>
                   <select name="expenses" id="expenses">
                     <option value="Rent">
                       Rent
@@ -190,6 +195,7 @@ const BudgetForm = () => {
             <div id="addIncome" style={{ display: "none" }}>
               <div>
                 <form onSubmit={handleIncomeSubmit}>
+                  <p><b>Add Income</b></p>
                   <input id="incomeInput" type="float" placeholder="0.00" min={"0"} required />
                   <span className="validity"></span>
                   <div>
