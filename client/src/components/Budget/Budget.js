@@ -136,7 +136,7 @@ const BudgetForm = () => {
             </div>
             <div id="addExpense" style={{ display: "none" }}>
               <form onSubmit={handleExpenseSubmit}>
-                <div>
+                <div className='addExpenseFormContainer'>
                   <select name="expenses" id="expenses">
                     <option value="Rent">
                       Rent
