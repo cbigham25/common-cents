@@ -74,6 +74,10 @@ input {
   font-size: 16px;
 }
 
+.confirmationText {
+  color: #009688;
+}
+
 button {
   padding: 10px 20px;
   background-color: #009688;
@@ -88,7 +92,6 @@ button:hover {
   background-color: #00796b;
 }
 
-/* Responsive styles */
 @media (max-width: 600px) {
   input {
     width: 100%;

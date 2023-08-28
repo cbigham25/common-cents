@@ -1,5 +1,5 @@
 import './budget.css';
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
@@ -11,6 +11,7 @@ const BudgetForm = () => {
 
   const username = Auth.getProfile().data.username;
 
+  const [confirmationMessage, setConfirmationMessage] = useState('');
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
   const [addIncome, { error: incomeError }] = useMutation(ADD_INCOME);
 
@@ -24,7 +25,6 @@ const BudgetForm = () => {
     try {
       const { data } = await addExpense({
         variables: {
-          // assuming your mutation requires an amount and category. Adjust accordingly.
           amount: expenseAmount,
           category: expenseCategory,
           username: username
@@ -33,13 +33,16 @@ const BudgetForm = () => {
 
       if (data) {
         document.getElementById('expenseInput').value = '';
+        setConfirmationMessage('Expense added');
+        setTimeout(() => {
+          setConfirmationMessage('');
+        }, 3000);
       }
 
       refetch();
 
     } catch (err) {
       console.error(err);
-      // Handle the error as needed.
     }
   };
 
@@ -57,8 +60,13 @@ const BudgetForm = () => {
         }
       });
 
-      if (data) {
+
+      if (data) {  
         document.getElementById('incomeInput').value = '';
+        setConfirmationMessage('Income added');
+        setTimeout(() => {
+          setConfirmationMessage('');
+        }, 3000);
       }
 
       refetch();
@@ -196,6 +204,7 @@ const BudgetForm = () => {
                   </select>
                   <input id="expenseInput" type="float" placeholder="0.00" min={"0"} required /><span className="validity"></span>  <div>
                     <input type="submit" />
+                    <p className='confirmationText'>{confirmationMessage}</p>
                   </div>
                 </div>
               </form>
@@ -208,6 +217,7 @@ const BudgetForm = () => {
                   <span className="validity"></span>
                   <div>
                     <input type="submit" />
+                    <p className='confirmationText'>{confirmationMessage}</p>
                   </div>
                 </form>
               </div>
