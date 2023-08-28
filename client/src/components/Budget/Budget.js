@@ -31,6 +31,10 @@ const BudgetForm = () => {
         }
       });
 
+      if (data) {
+        document.getElementById('expenseInput').value = '';
+      }
+
       refetch();
 
     } catch (err) {
@@ -52,6 +56,10 @@ const BudgetForm = () => {
           username: username
         }
       });
+
+      if (data) {
+        document.getElementById('incomeInput').value = '';
+      }
 
       refetch();
 
