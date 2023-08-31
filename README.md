@@ -29,7 +29,7 @@ The app is hosted with Heroku and AtlasDB and can be accessed at `https://common
 
 
 If running locally, the application can be accessed at `http://localhost:3000`.
-
+ 
 ## Key Features
 
 ### **Expense Tracking & Categorization**
