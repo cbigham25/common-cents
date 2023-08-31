@@ -8,6 +8,12 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentMonthPadded = String(currentMonth).padStart(2, '0');
+  const currentYear = currentDate.getFullYear();
+
   return (
     <header>
       <Link to="/">
@@ -16,7 +22,7 @@ const Header = () => {
       {Auth.loggedIn() ? (
         <>
           <section className='dateInput'>
-            <select name="months" id="months">
+            <select name="months" id="months" defaultValue={`${currentMonthPadded}`}>
               <option value="01">
                 January
               </option>
@@ -61,6 +67,7 @@ const Header = () => {
               min="1900"
               max="2099"
               step="1"
+              defaultValue={`${currentYear}`}
               minLength="4"
               maxLength="4"
               required

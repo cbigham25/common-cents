@@ -60,3 +60,11 @@ header button {
 header button:hover {
   background-color: #c2185b;
 }
+
+.dateInput * {
+  margin: 5px;
+}
+
+.dateInput input {
+  padding: 0;
+}
