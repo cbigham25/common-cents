@@ -16,7 +16,8 @@
 .needsContainer h2,
 .wantsContainer h2 {
   font-size: 18px;
-  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .needsContainer p,
