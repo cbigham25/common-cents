@@ -23,14 +23,39 @@ const PieChart = ({ aggregatedExpenses }) => {
         datasets: [{
           data: [aggregatedExpenses.Rent, aggregatedExpenses.Utilities, aggregatedExpenses.Taxes, aggregatedExpenses.Insurance, aggregatedExpenses.Bills, aggregatedExpenses.Health, aggregatedExpenses.Groceries, aggregatedExpenses.Debt, aggregatedExpenses.OtherNeeds, aggregatedExpenses.Dining, aggregatedExpenses.Fun, aggregatedExpenses.Products, aggregatedExpenses.Clothing, aggregatedExpenses.Vacation, aggregatedExpenses.OtherWants], // Value for each section
           backgroundColor: [
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(54, 162, 235, 0.8)',
-            'rgba(255, 206, 86, 0.8)'
+            'rgba(0, 0, 235, 0.8)',
+            'rgba(0, 0, 150, 0.8)',
+            'rgba(0, 0, 200, 0.8)',
+            'rgba(0, 0, 145, 0.8)',
+            'rgba(0, 0, 235, 0.8)',
+            'rgba(0, 0, 140, 0.8)',
+            'rgba(0, 0, 230, 0.8)',
+            'rgba(0, 0, 125, 0.8)',
+            'rgba(0, 0, 160, 0.8)',
+            'rgba(255, 0, 0, 0.8)',
+            'rgba(150, 0, 0, 0.8)',
+            'rgba(230, 0, 0, 0.8)',
+            'rgba(173, 0, 0, 0.8)',
+            'rgba(210, 0, 0, 0.8)',
+            'rgba(115, 0, 0, 0.8)',
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+            'rgba(54, 1, 235, 1)',
+
+            'rgba(255, 2, 1, 4)',
+            'rgba(255, 2, 1, 4)',
+            'rgba(255, 2, 1, 4)',
+            'rgba(255, 2, 1, 4)',
+            'rgba(255, 2, 1, 4)',
+            'rgba(255, 2, 1, 4)',
           ],
           borderWidth: 1
         }]
