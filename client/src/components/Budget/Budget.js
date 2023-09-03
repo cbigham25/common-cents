@@ -5,7 +5,9 @@ import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
 import { ADD_EXPENSE, ADD_INCOME } from "../utils/mutations.js";
 import Auth from '../utils/auth'
+import PieChart from '../Chart/PieChart';
 import './budget.css'
+
 
 const BudgetForm = () => {
 
@@ -61,7 +63,7 @@ const BudgetForm = () => {
       });
 
 
-      if (data) {  
+      if (data) {
         document.getElementById('incomeInput').value = '';
         setConfirmationMessage('Income added');
         setTimeout(() => {
@@ -222,26 +224,33 @@ const BudgetForm = () => {
                 </form>
               </div>
             </div>
-            <section className="needsContainer">
-              <h2>Needs {needsTotal} / {totalIncome * 0.7}</h2>
-              <p>Rent: {aggregatedExpenses.Rent || 0}</p>
-              <p>Utilities:{aggregatedExpenses.Utilities || 0}</p>
-              <p>Taxes: {aggregatedExpenses.Taxes || 0}</p>
-              <p>Insurance: {aggregatedExpenses.Insurance || 0}</p>
-              <p>Bills: {aggregatedExpenses.Bills || 0}</p>
-              <p>Health: {aggregatedExpenses.Health || 0}</p>
-              <p>Groceries: {aggregatedExpenses.Groceries || 0}</p>
-              <p>Debt: {aggregatedExpenses.Debt || 0}</p>
-              <p>Other: {aggregatedExpenses.OtherNeeds || 0}</p>
-            </section>
-            <section className="wantsContainer">
-              <h2>Wants {wantsTotal} / {totalIncome * 0.3}</h2>
-              <p>Dining: {aggregatedExpenses.Dining || 0}</p>
-              <p>Fun: {aggregatedExpenses.Fun || 0}</p>
-              <p>Products: {aggregatedExpenses.Products || 0}</p>
-              <p>Clothing: {aggregatedExpenses.Clothing || 0}</p>
-              <p>Vacation: {aggregatedExpenses.Vacation || 0}</p>
-              <p>Other: {aggregatedExpenses.OtherWants || 0}</p>
+            <section className='budgetContent'>
+              <section className='budgetTiles budgetContentChild'>
+                <section className="needsContainer">
+                  <h2>Needs {needsTotal} / {totalIncome * 0.7}</h2>
+                  <p>Rent: {aggregatedExpenses.Rent || 0}</p>
+                  <p>Utilities:{aggregatedExpenses.Utilities || 0}</p>
+                  <p>Taxes: {aggregatedExpenses.Taxes || 0}</p>
+                  <p>Insurance: {aggregatedExpenses.Insurance || 0}</p>
+                  <p>Bills: {aggregatedExpenses.Bills || 0}</p>
+                  <p>Health: {aggregatedExpenses.Health || 0}</p>
+                  <p>Groceries: {aggregatedExpenses.Groceries || 0}</p>
+                  <p>Debt: {aggregatedExpenses.Debt || 0}</p>
+                  <p>Other: {aggregatedExpenses.OtherNeeds || 0}</p>
+                </section>
+                <section className="wantsContainer">
+                  <h2>Wants {wantsTotal} / {totalIncome * 0.3}</h2>
+                  <p>Dining: {aggregatedExpenses.Dining || 0}</p>
+                  <p>Fun: {aggregatedExpenses.Fun || 0}</p>
+                  <p>Products: {aggregatedExpenses.Products || 0}</p>
+                  <p>Clothing: {aggregatedExpenses.Clothing || 0}</p>
+                  <p>Vacation: {aggregatedExpenses.Vacation || 0}</p>
+                  <p>Other: {aggregatedExpenses.OtherWants || 0}</p>
+                </section>
+              </section>
+              <section className='graph budgetContentChild'>
+                <PieChart />
+              </section>
             </section>
           </section>
         </>) : (

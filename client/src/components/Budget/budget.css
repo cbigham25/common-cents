@@ -93,6 +93,19 @@ button:hover {
   background-color: #00796b;
 }
 
+.budgetContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.budgetContentChild {
+  flex: 1;
+}
+
+.graph {
+  height: 500px;
+}
+
 @media (max-width: 600px) {
   input {
     width: 100%;

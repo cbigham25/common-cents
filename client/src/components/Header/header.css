@@ -65,6 +65,16 @@ header button:hover {
   margin: 5px;
 }
 
-.dateInput input {
-  padding: 0;
+.dateInput select {
+  padding: 2px;
 }
+
+.dateInput input {
+  padding: 2px;
+  font-size: 14px;
+}
+
+.dateInput button {
+  padding: 3px 15px;
+}
+
