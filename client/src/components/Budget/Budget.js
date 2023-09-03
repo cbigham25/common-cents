@@ -249,7 +249,7 @@ const BudgetForm = () => {
                 </section>
               </section>
               <section className='graph budgetContentChild'>
-                <PieChart />
+                <PieChart aggregatedExpenses={aggregatedExpenses} />
               </section>
             </section>
           </section>

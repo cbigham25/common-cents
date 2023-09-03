@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import './chart.css'
-import { Chart, ArcElement } from 'chart.js';
-import { PieController } from 'chart.js';
+import { Chart, ArcElement, Tooltip, PieController } from 'chart.js';
 Chart.register(PieController);
 Chart.register(ArcElement);
+Chart.register([Tooltip]);
 
 
-
-const PieChart = () => {
+const PieChart = ({ aggregatedExpenses }) => {
 
   useEffect(() => {
     const ctx = document.getElementById('myPieChart').getContext('2d');
@@ -20,9 +19,9 @@ const PieChart = () => {
     window.myPieChart = new Chart(ctx, {
       type: 'pie', // Set the chart type
       data: {
-        labels: ['Red', 'Blue', 'Yellow'], // Label for each section
+        labels: ['Rent', 'Utilities', 'Taxes', 'Insurance', 'Bills', 'Health', 'Groceries', 'Debt', 'Other Needs', 'Dining', 'Fun', 'Products', 'Clothing', 'Vacation', 'Other Wants'],
         datasets: [{
-          data: [10, 20, 30], // Value for each section
+          data: [aggregatedExpenses.Rent, aggregatedExpenses.Utilities, aggregatedExpenses.Taxes, aggregatedExpenses.Insurance, aggregatedExpenses.Bills, aggregatedExpenses.Health, aggregatedExpenses.Groceries, aggregatedExpenses.Debt, aggregatedExpenses.OtherNeeds, aggregatedExpenses.Dining, aggregatedExpenses.Fun, aggregatedExpenses.Products, aggregatedExpenses.Clothing, aggregatedExpenses.Vacation, aggregatedExpenses.OtherWants], // Value for each section
           backgroundColor: [
             'rgba(255, 99, 132, 0.8)',
             'rgba(54, 162, 235, 0.8)',
@@ -37,11 +36,16 @@ const PieChart = () => {
         }]
       },
       options: {
-        responsive: true
-      }
+        responsive: true,
+        plugins: {
+          tooltip: {
+            enabled: true,
+          },
+        },
+      }      
     });
 
-  }, []);
+  }, [aggregatedExpenses]);
 
   return (
     <div>
