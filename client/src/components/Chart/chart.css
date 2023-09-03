@@ -1,3 +1,9 @@
 #myPieChart {
-    height: 500px;
+    height: 460px !important;
+}
+
+.graph {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 10px;
 }

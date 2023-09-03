@@ -5,7 +5,8 @@
 }
 
 .needsContainer,
-.wantsContainer {
+.wantsContainer,
+.graph {
   padding: 10px;
   border: 1px solid #444444;
   margin-top: 10px;
@@ -100,10 +101,6 @@ button:hover {
 
 .budgetContentChild {
   flex: 1;
-}
-
-.graph {
-  height: 500px;
 }
 
 @media (max-width: 600px) {
