@@ -89,13 +89,12 @@ const BudgetForm = () => {
   }
 
   const userExpenses = data?.user?.expenses;
+  console.log(userExpenses)
   const totalExpenses = userExpenses?.reduce((acc, expense) => acc + expense.amount, 0) || 0;
 
   const userIncomes = data?.user?.incomes;
   const totalIncome = userIncomes?.reduce((acc, income) => acc + income.amount, 0) || 0;
 
-  console.log(data?.user)
-  console.log(data?.user?.incomes)
 
   const aggregateExpensesByCategory = (expenses) => {
     return expenses.reduce((acc, expense) => {
@@ -116,7 +115,6 @@ const BudgetForm = () => {
     aggregatedExpenses = aggregateExpensesByCategory(expenses);
   }
 
-  console.log(aggregatedExpenses);
 
   const NEEDS_CATEGORIES = ["Rent", "Utilities", "Taxes", "Insurance", "Bills", "Health", "Groceries", "Debt", "OtherNeeds"];
   const WANTS_CATEGORIES = ["Dining", "Fun", "Products", "Clothing", "Vacation", "OtherWants"];

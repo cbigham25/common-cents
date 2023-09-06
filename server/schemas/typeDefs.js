@@ -14,6 +14,7 @@ const typeDefs = gql`
     amount: Float!
     category: String
     createdAt: String
+    month: String
     user: User
   }
 
@@ -22,6 +23,7 @@ const typeDefs = gql`
     amount: Float
     category: String
     createdAt: String
+    month: String
     user: User
 }
 
@@ -33,9 +35,9 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    expenses(username: String, category: String, month: Int): [Expense] 
+    expenses(username: String, category: String, month: String): [Expense] 
     expense(expenseId: ID!): Expense
-    incomes(username: String, category: String, month: Int): [Income] 
+    incomes(username: String, category: String, month:  Int): [Income] 
     income(incomeId: ID!): Income
     me: User
   }

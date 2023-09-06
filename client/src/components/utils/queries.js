@@ -10,6 +10,7 @@ query Query($username: String!) {
       amount
       category
       createdAt
+      month
     }
     incomes {
       _id
