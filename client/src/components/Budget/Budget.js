@@ -88,7 +88,10 @@ const BudgetForm = () => {
     return <div>Loading...</div>;
   }
 
-  const userExpenses = data?.user?.expenses;
+  let selectedMonth = "0823"
+  const expenses = data?.user?.expenses.filter(expense => expense.month === selectedMonth) || [];
+
+  const userExpenses = data?.user?.expenses.filter(expense => expense.month === selectedMonth) || [];
   console.log(userExpenses)
   const totalExpenses = userExpenses?.reduce((acc, expense) => acc + expense.amount, 0) || 0;
 
@@ -106,8 +109,6 @@ const BudgetForm = () => {
       return acc;
     }, {});
   }
-
-  const expenses = data?.user?.expenses;
 
   let aggregatedExpenses = 0;
 
