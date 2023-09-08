@@ -37,16 +37,17 @@ const BudgetForm = () => {
         variables: {
           amount: expenseAmount,
           category: expenseCategory,
-          username: username
+          username: username,
+          month: selectedMonth
         }
       });
 
       if (data) {
         document.getElementById('expenseInput').value = '';
         setConfirmationMessage('Expense added');
-        setTimeout(() => {
-          setConfirmationMessage('');
-        }, 3000);
+        // setTimeout(() => {
+        //   setConfirmationMessage('');
+        // }, 3000);
       }
 
       refetch();
@@ -162,7 +163,7 @@ const BudgetForm = () => {
             <div className='addValueButtonContainer'>
               <button className='addExpenseButton' onClick={() => revealEl("addExpense", "addIncome")}>Add Expense</button>
               <button className='addIncomeButton' onClick={() => revealEl("addIncome", "addExpense")}>Add Income</button>
-              <button>See History</button>
+              {/* <button>See History</button> */}
             </div>
             <div id="addExpense" style={{ display: "none" }}>
               <form onSubmit={handleExpenseSubmit}>

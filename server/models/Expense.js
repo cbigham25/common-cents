@@ -23,7 +23,7 @@ const expenseSchema = new Schema({
   month: {
     type: String,
     validate: {
-      validator: (value) => /^((0[1-9])|(1[0-2]))\d{2}$/.test(value),
+      validator: (value) => /^(0[1-9]|1[0-2])\d{4}$/.test(value),
       message: '{VALUE} is not a valid month/year format'
     }
   },

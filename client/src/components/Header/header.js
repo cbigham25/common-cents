@@ -85,9 +85,6 @@ const Header = ({ onDateChange }) => {
             <button onClick={handleDateChange}>Go</button>
           </section>
           <div>
-            <Link to="/me">
-              {Auth.getProfile().data.username}'s profile
-            </Link>
             <button onClick={logout}>
               Logout
             </button>

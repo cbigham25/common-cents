@@ -68,36 +68,14 @@ const resolvers = {
 
             return { token, user };
         },
-        // addExpense: async (parent, { amount, category }, context) => {
-        //     console.log(context.user)
-        //     if (context.user) {
-        //         const currentDate = new Date();
-        //         const monthYear = `${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().slice(-2)}`;
-
-        //         const expense = await Expense.create({
-        //             amount,
-        //             category,
-        //             user: context.user._id,
-        //             month: monthYear
-        //         });
-
-        //         await User.findOneAndUpdate(
-        //             { _id: context.user._id },
-        //             { $addToSet: { expenses: expense._id } }
-        //         );
-
-        //         return expense;
-        //     }
-        //     throw new AuthenticationError('You need to be logged in!');
-        // },
-        addExpense: async (_, { amount, category, username }, context) => {
+        addExpense: async (_, { amount, category, username, month }, context) => {
             const user = await User.findOne({ username: username });
 
             if (!user) {
                 throw new Error('User not found');
             }
 
-            const expense = new Expense({ amount, category, user: user._id });
+            const expense = new Expense({ amount, category, user: user._id, month });
             await expense.save();
 
             user.expenses.push(expense);

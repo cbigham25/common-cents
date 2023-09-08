@@ -41,10 +41,15 @@ export const DateContext = React.createContext();
 // eslint-disabled just allows us to move forward for now by avoiding the ESlint warnings.
 // We need to utilize these variables to make it functional
 function App() {
+  const currentDate = new Date();
+  const initialMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const initialYear = currentDate.getFullYear();
+  
   const [selectedDate, setSelectedDate] = useState({
-    month: new Date().getMonth() + 1,
-    year: new Date().getFullYear(),
+      month: initialMonth,
+      year: initialYear,
   });
+  
 
   return (<ApolloProvider client={client}>
     <Router>

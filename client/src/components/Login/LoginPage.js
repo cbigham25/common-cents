@@ -48,29 +48,36 @@ const LoginPage = () => {
           <Link to="/">back to the homepage.</Link>
         </p>
       ) : (
-        <form onSubmit={handleFormSubmit}>
-          <input
-            className="form-input"
-            placeholder="Your Username"
-            name="username"
-            type="text"
-            value={formState.username}
-            onChange={handleChange}
-          />
-          <br />
-          <input
-            className="form-input"
-            placeholder="******"
-            name="password"
-            type="password"
-            value={formState.password}
-            onChange={handleChange}
-          />
-          <br />
-          <button style={{ cursor: "pointer" }} type="submit">
-            Login
-          </button>
-        </form>
+        <section className='loginFormContainer'>
+          <form className='loginForm' onSubmit={handleFormSubmit}>
+            <input
+              className="form-input"
+              placeholder="Your Username"
+              name="username"
+              type="text"
+              value={formState.username}
+              onChange={handleChange}
+            />
+            <br />
+            <input
+              className="form-input"
+              placeholder="******"
+              name="password"
+              type="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+            <br />
+            <button style={{ cursor: "pointer" }} type="submit">
+              Login
+            </button>
+          </form>
+          <section className='loginCreds'>
+            <h1>Test credentials</h1>
+            <p>Username: test</p>
+            <p>Password: password</p>
+          </section>
+        </section>
       )}
 
       {error && <div>{error.message}</div>}

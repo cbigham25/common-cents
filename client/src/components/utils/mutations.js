@@ -23,11 +23,12 @@ const ADD_USER = gql`
 `;
 
 const ADD_EXPENSE = gql`
-  mutation addExpense($amount: Float!, $category: String!, $username: String!) {
-    addExpense(amount: $amount, category: $category, username: $username) {
+  mutation addExpense($amount: Float!, $category: String!, $username: String!, $month: String!) {
+    addExpense(amount: $amount, category: $category, username: $username, month: $month) {
       _id
       amount
       category
+      month
       user {
         username
       }
