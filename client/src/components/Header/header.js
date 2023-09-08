@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
 import Auth from '../utils/auth';
+import { DateContext } from '../../App';
 
-const Header = () => {
+
+const Header = ({ onDateChange }) => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -13,6 +15,14 @@ const Header = () => {
   const currentMonth = currentDate.getMonth() + 1;
   const currentMonthPadded = String(currentMonth).padStart(2, '0');
   const currentYear = currentDate.getFullYear();
+
+  const { setSelectedDate } = useContext(DateContext);
+
+  function handleDateChange() {
+    const month = document.getElementById('months').value;
+    const year = document.getElementById('year').value;
+    setSelectedDate({ month, year });
+  }
 
   return (
     <header>
@@ -72,7 +82,7 @@ const Header = () => {
               maxLength="4"
               required
             />
-            <button>Go</button>
+            <button onClick={handleDateChange}>Go</button>
           </section>
           <div>
             <Link to="/me">

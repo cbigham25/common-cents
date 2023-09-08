@@ -1,12 +1,13 @@
 import './budget.css';
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
 import { ADD_EXPENSE, ADD_INCOME } from "../utils/mutations.js";
 import Auth from '../utils/auth'
 import PieChart from '../Chart/PieChart';
-import './budget.css'
+import { DateContext } from '../../App';
+
 
 
 const BudgetForm = () => {
@@ -17,6 +18,13 @@ const BudgetForm = () => {
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
   const [addIncome, { error: incomeError }] = useMutation(ADD_INCOME);
 
+  const { selectedDate } = useContext(DateContext);
+
+  useEffect(() => {
+    refetch();
+  }, [selectedDate]);
+
+  let selectedMonth = `${selectedDate.month}${selectedDate.year}`
 
   const handleExpenseSubmit = async (event) => {
     event.preventDefault();
@@ -88,7 +96,7 @@ const BudgetForm = () => {
     return <div>Loading...</div>;
   }
 
-  let selectedMonth = "0823"
+
   const expenses = data?.user?.expenses.filter(expense => expense.month === selectedMonth) || [];
 
   const userExpenses = data?.user?.expenses.filter(expense => expense.month === selectedMonth) || [];
@@ -249,7 +257,11 @@ const BudgetForm = () => {
                 </section>
               </section>
               <section className='graph budgetContentChild'>
+                {userExpenses.length === 0 ? (
+                                  <p>No Expense Data</p>
+                ): (
                 <PieChart aggregatedExpenses={aggregatedExpenses} />
+                )}
               </section>
             </section>
           </section>
