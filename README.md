@@ -27,7 +27,6 @@ A collaborative MERN stack application that aids users in tracking their finance
 
 The app is hosted with Heroku and AtlasDB and can be accessed at `https://common-cents-bootcamp-fc6fba95f1fb.herokuapp.com/`.
 
-
 If running locally, the application can be accessed at `http://localhost:3000`.
  
 ## Key Features
