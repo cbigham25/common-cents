@@ -75,9 +75,9 @@ const BudgetForm = () => {
       if (data) {
         document.getElementById('incomeInput').value = '';
         setConfirmationMessage('Income added');
-        setTimeout(() => {
-          setConfirmationMessage('');
-        }, 3000);
+        // setTimeout(() => {
+        //   setConfirmationMessage('');
+        // }, 3000);
       }
 
       refetch();
