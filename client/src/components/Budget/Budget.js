@@ -1,5 +1,5 @@
 import './budget.css';
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries.js';
@@ -14,7 +14,6 @@ const BudgetForm = () => {
 
   const username = Auth.getProfile().data.username;
 
-  const [confirmationMessage, setConfirmationMessage] = useState('');
   const [addExpense, { error }] = useMutation(ADD_EXPENSE);
   const [addIncome, { error: incomeError }] = useMutation(ADD_INCOME);
 
@@ -44,10 +43,13 @@ const BudgetForm = () => {
 
       if (data) {
         document.getElementById('expenseInput').value = '';
-        setConfirmationMessage('Expense added');
-        // setTimeout(() => {
-        //   setConfirmationMessage('');
-        // }, 3000);
+        const expenseConfirmation = document.getElementById('expenseConfirmation');
+        expenseConfirmation.classList.remove('hidden');
+        expenseConfirmation.classList.add('visible');
+        setTimeout(() => {
+          expenseConfirmation.classList.remove('visible');
+          expenseConfirmation.classList.add('hidden');
+        }, 3000);
       }
 
       refetch();
@@ -74,10 +76,13 @@ const BudgetForm = () => {
 
       if (data) {
         document.getElementById('incomeInput').value = '';
-        setConfirmationMessage('Income added');
-        // setTimeout(() => {
-        //   setConfirmationMessage('');
-        // }, 3000);
+        const incomeConfirmation = document.getElementById('incomeConfirmation');
+        incomeConfirmation.classList.remove('hidden');
+        incomeConfirmation.classList.add('visible');
+        setTimeout(() => {
+          incomeConfirmation.classList.remove('visible');
+          incomeConfirmation.classList.add('hidden');
+        }, 3000);
       }
 
       refetch();
@@ -215,7 +220,7 @@ const BudgetForm = () => {
                   </select>
                   <input id="expenseInput" type="float" placeholder="0.00" min={"0"} required /><span className="validity"></span>  <div>
                     <input type="submit" />
-                    <p className='confirmationText'>{confirmationMessage}</p>
+                    <p id="expenseConfirmation" className='confirmationText hidden'>Expense Added</p>
                   </div>
                 </div>
               </form>
@@ -228,7 +233,7 @@ const BudgetForm = () => {
                   <span className="validity"></span>
                   <div>
                     <input type="submit" />
-                    <p className='confirmationText'>{confirmationMessage}</p>
+                    <p id='incomeConfirmation' className='confirmationText hidden'>Income Added</p>
                   </div>
                 </form>
               </div>
@@ -259,9 +264,9 @@ const BudgetForm = () => {
               </section>
               <section className='graph budgetContentChild'>
                 {userExpenses.length === 0 ? (
-                                  <p>No Expense Data</p>
-                ): (
-                <PieChart aggregatedExpenses={aggregatedExpenses} />
+                  <p>No Expense Data</p>
+                ) : (
+                  <PieChart aggregatedExpenses={aggregatedExpenses} />
                 )}
               </section>
             </section>
