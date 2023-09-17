@@ -37,7 +37,7 @@ const typeDefs = gql`
     user(username: String!): User
     expenses(username: String, category: String, month: String): [Expense] 
     expense(expenseId: ID!): Expense
-    incomes(username: String, category: String, month:  Int): [Income] 
+    incomes(username: String, category: String, month:  String): [Income] 
     income(incomeId: ID!): Income
     me: User
   }
@@ -47,7 +47,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addExpense(amount: Float!, category: String!, username: String!, month: String!): Expense
     removeExpense(expenseId: ID!): Expense
-    addIncome(amount: Float!, category: String, username: String!): Income
+    addIncome(amount: Float!, category: String, username: String!, month: String!): Income
     removeIncome(incomeId: ID!): Income
   }
 `;

@@ -37,12 +37,16 @@ const ADD_EXPENSE = gql`
 `;
 
 export const ADD_INCOME = gql`
-  mutation AddIncome($amount: Float!, $category: String, $username: String!) {
-      addIncome(amount: $amount, category: $category, username: $username) {
+  mutation AddIncome($amount: Float!, $category: String, $username: String!, $month: String!) {
+      addIncome(amount: $amount, category: $category, username: $username, month: $month) {
           _id
           amount
           category
           __typename
+          month
+          user {
+            username
+          }
       }
   }
 `;

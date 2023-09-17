@@ -99,28 +99,20 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addIncome: async (parent, { amount, category, username }) => {
+        addIncome: async (parent, { amount, category, username, month }) => {
             const user = await User.findOne({ username });
             
             if (!user) {
                 throw new Error('User not found');
             }
         
-            const currentDate = new Date();
-            const monthYear = `${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().slice(-2)}`;
         
-            const income = await Income.create({
-                amount,
-                category,
-                user: user._id,
-                month: monthYear
-            });
-        
-            await User.findOneAndUpdate(
-                { _id: user._id },
-                { $addToSet: { incomes: income._id } }
-            );
-        
+            const income = await Income.create({ amount, category, user: user._id, month });
+            await income.save();
+
+            user.incomes.push(income);
+            await user.save();
+
             return income;
         },              
         removeIncome: async (parent, { incomeId }, context) => {

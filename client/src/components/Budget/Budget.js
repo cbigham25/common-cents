@@ -69,7 +69,8 @@ const BudgetForm = () => {
         variables: {
           category: "Income",
           amount: incomeAmount,
-          username: username
+          username: username,
+          month: selectedMonth
         }
       });
 
@@ -109,7 +110,7 @@ const BudgetForm = () => {
   console.log(userExpenses)
   const totalExpenses = userExpenses?.reduce((acc, expense) => acc + expense.amount, 0) || 0;
 
-  const userIncomes = data?.user?.incomes;
+  const userIncomes = data?.user?.incomes.filter(income => income.month === selectedMonth) || [];
   const totalIncome = userIncomes?.reduce((acc, income) => acc + income.amount, 0) || 0;
 
 
