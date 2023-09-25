@@ -7,6 +7,7 @@ import { ADD_EXPENSE, ADD_INCOME } from "../utils/mutations.js";
 import Auth from '../utils/auth'
 import PieChart from '../Chart/PieChart';
 import { DateContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 
 
@@ -169,7 +170,9 @@ const BudgetForm = () => {
             <div className='addValueButtonContainer'>
               <button className='addExpenseButton' onClick={() => revealEl("addExpense", "addIncome")}>Add Expense</button>
               <button className='addIncomeButton' onClick={() => revealEl("addIncome", "addExpense")}>Add Income</button>
-              {/* <button>See History</button> */}
+              <Link to="/history">
+                See History
+              </Link>
             </div>
             <div id="addExpense" style={{ display: "none" }}>
               <form onSubmit={handleExpenseSubmit}>

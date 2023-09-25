@@ -11,6 +11,7 @@ import LoginPage from './components/Login/LoginPage';
 import SignUpPage from './components/Signup/SignupPage';
 import BudgetForm from './components/Budget/Budget'
 import Header from './components/Header/header'
+import History from './components/History/history';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const httpLink = createHttpLink({
@@ -44,12 +45,12 @@ function App() {
   const currentDate = new Date();
   const initialMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
   const initialYear = currentDate.getFullYear();
-  
+
   const [selectedDate, setSelectedDate] = useState({
-      month: initialMonth,
-      year: initialYear,
+    month: initialMonth,
+    year: initialYear,
   });
-  
+
 
   return (<ApolloProvider client={client}>
     <Router>
@@ -61,6 +62,10 @@ function App() {
               <Route
                 path="/"
                 element={<BudgetForm selectedDate={selectedDate} />}
+              />
+              <Route
+                path="/history"
+                element={<History />}
               />
               <Route
                 path="/login"
