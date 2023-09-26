@@ -170,7 +170,7 @@ const BudgetForm = () => {
             <div className='addValueButtonContainer'>
               <button className='addExpenseButton' onClick={() => revealEl("addExpense", "addIncome")}>Add Expense</button>
               <button className='addIncomeButton' onClick={() => revealEl("addIncome", "addExpense")}>Add Income</button>
-              <Link to="/history">
+              <Link to="/history" className='historyButton'>
                 See History
               </Link>
             </div>

@@ -94,6 +94,22 @@ button:hover {
   background-color: #00796b;
 }
 
+.historyButton {
+  padding: 10px 20px;
+  background-color: #009688;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.historyButton:hover {
+  background-color: #00796b;
+}
+
 .budgetContent {
   display: flex;
   justify-content: space-between;
