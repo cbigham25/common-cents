@@ -8,6 +8,7 @@ import Auth from '../utils/auth'
 import PieChart from '../Chart/PieChart';
 import { DateContext } from '../../App';
 import { Link } from 'react-router-dom';
+import Landing from '../Landing/Landing';
 
 
 
@@ -276,7 +277,7 @@ const BudgetForm = () => {
             </section>
           </section>
         </>) : (
-        <p>Please login to or create your account from the links above! </p>
+        <Landing />
       )
       }
     </div >
