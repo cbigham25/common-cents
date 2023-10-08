@@ -5,18 +5,22 @@ function Landing() {
     return (
         <div>
             <section className='landingSection'>
-                <div>
-                    <h1>
-                        <span>The</span>
-                        <span> EASIEST </span>
-                        <span>way to budget your life!</span>
-                    </h1>
+                <div className='landingSubSection'>
+                    <div className='landingTitle'>
+                        <h1>
+                            <span>The </span>
+                            <span className='underline'>EASIEST</span>
+                            <span> way to budget your life!</span>
+                        </h1>
+                    </div>
                     <p>
                         Tired of overspending but don't know where to start? Look no further! Fix your financial health today with the most simple approch to setting a budget. No prior knowledge needed!
                     </p>
+                    <button>Try It Now</button>
+                    <button>View An Example</button>
                 </div>
-                <div>
-                    
+                <div className='landingSubSection'>
+
                 </div>
             </section>
             <section>
