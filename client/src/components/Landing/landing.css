@@ -53,15 +53,25 @@ button {
 
 .landingTile {
     background-color: rgb(243, 245, 247);
-    margin: 10px;
+    margin: 10px 30px;
     border-radius: 12px;
-    padding: 80px 35px;
+    padding: 80px;
+    text-align: center;
+}
+
+.landingTileCard {
+    margin-bottom: 30px;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .landingTileNumber {
     display: flex;
     justify-content: space-evenly;
     padding: 0 12vw;
+    margin: 50px;
 }
 
 .landingTileNumberTile {
@@ -71,6 +81,7 @@ button {
     display: flex;
     padding: 20px 10px;
     border-radius: 12px;
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
 }
 
 .landingTileNumberTile h1 {
