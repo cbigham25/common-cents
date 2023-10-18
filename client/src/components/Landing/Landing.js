@@ -44,14 +44,15 @@ function Landing() {
                     <div className='landingTileSteps'>
                         <div className='landingTileStepCard'>
                             <h1>1</h1>
-                            <h2>Enter your income</h2>
+                            <h2>Submit your income</h2>
+                            <p>Common Cents will automatically determine your budget based on your monthly income</p>
                         </div>
                         <div className='landingTileStepCard'>
                             <h1>2</h1>
                             <h2>Enter your expenses</h2>
+                            <p>In your budget dashboard you will be able to see a comprehensive breakdown of your monthly spending and how much you have left to spend in each category for the month.</p>
                         </div>
                     </div>
-                    <p>and Common Cents does the rest! In your budget dashboard you will be able to see a comprehensive breakdown of your monthly spending and how much you have left to spend in each category.</p>
                 </div>
             </section>
         </div>

@@ -87,3 +87,13 @@ button {
 .landingTileNumberTile h1 {
     font-size: 45px;
 }
+
+.landingTileSteps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landingTileStepCard {
+    width: 30vw;
+}
