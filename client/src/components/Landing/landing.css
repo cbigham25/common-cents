@@ -51,6 +51,21 @@ button {
     border-radius: 12px;
 }
 
+.landingImageHeaderSubtextContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.landingImageHeaderSubtext {
+    display: flex;
+}
+
+.landingImageHeaderCheck {
+    fill: #009688;
+    width: 1em;
+    margin-right: 10px;
+}
+
 .landingTile {
     background-color: rgb(243, 245, 247);
     margin: 10px 30px;
