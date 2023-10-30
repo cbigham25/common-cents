@@ -70,7 +70,7 @@ button {
     background-color: rgb(243, 245, 247);
     margin: 10px 30px;
     border-radius: 12px;
-    padding: 80px;
+    padding: 6vw;
     text-align: center;
 }
 
@@ -96,7 +96,7 @@ button {
     display: flex;
     padding: 20px 10px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .5);
 }
 
 .landingTileNumberTile h1 {
@@ -111,4 +111,24 @@ button {
 
 .landingTileStepCard {
     width: 30vw;
+}
+
+@media (max-width: 800px) {
+    .landingImageHeader {
+        display: none;
+    }
+
+    .landingSubSection {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .landingTileNumber {
+        padding: 0;
+    }
+
+    .landingTileStepCard {
+        width: 75%;
+    }
 }
