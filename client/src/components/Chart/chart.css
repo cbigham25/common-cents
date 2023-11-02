@@ -12,4 +12,9 @@
     .graph {
         margin-left: 0;
     }
+
+    #myPieChart {
+        height: 300px !important;
+        width: 300px;
+    }
 }

@@ -271,7 +271,7 @@ const BudgetForm = () => {
                 {userExpenses.length === 0 ? (
                   <p>No Expense Data</p>
                 ) : (
-                  <PieChart aggregatedExpenses={aggregatedExpenses} />
+                  <PieChart aggregatedExpenses={aggregatedExpenses}/>
                 )}
               </section>
             </section>
