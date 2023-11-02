@@ -127,9 +127,8 @@ button:hover {
   display: block;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   input {
-    width: 100%;
     padding: 10px;
     font-size: 14px;
   }
@@ -137,5 +136,11 @@ button:hover {
   button {
     padding: 8px 16px;
     font-size: 14px;
+  }
+
+  .budgetContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

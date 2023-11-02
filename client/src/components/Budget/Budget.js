@@ -171,9 +171,9 @@ const BudgetForm = () => {
             <div className='addValueButtonContainer'>
               <button className='addExpenseButton' onClick={() => revealEl("addExpense", "addIncome")}>Add Expense</button>
               <button className='addIncomeButton' onClick={() => revealEl("addIncome", "addExpense")}>Add Income</button>
-              <Link to="/history" className='historyButton'>
+              {/* <Link to={{ pathname: "/history", state: { userExpenses } }} className='historyButton'>
                 See History
-              </Link>
+              </Link> */}
             </div>
             <div id="addExpense" style={{ display: "none" }}>
               <form onSubmit={handleExpenseSubmit}>

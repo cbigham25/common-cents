@@ -1,11 +1,18 @@
-import React, { PureComponent } from 'react'
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-export class History extends PureComponent {
-  render() {
-    return (
-      <div>History</div>
-    )
-  }
-}
+const History = () => {
+  const location = useLocation();
 
-export default History
+  useEffect(() => {
+    console.log("location.state:", location.state);
+    // accessing userExpenses
+    if (location.state && location.state.userExpenses) {
+      console.log("userExpenses:", location.state.userExpenses);
+    }
+  }, [location]);
+
+  return <div>History</div>;
+};
+
+export default History;
